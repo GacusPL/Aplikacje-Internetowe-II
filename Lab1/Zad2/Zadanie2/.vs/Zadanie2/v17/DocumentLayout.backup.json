@@ -1,0 +1,105 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Dokumenty\\GitHub\\Aplikacje-Internetowe-II\\Lab1\\Zad2\\Zadanie2\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9DEB9FA0-2676-49E6-8182-97392C2580E3}|Zadanie2\\Zadanie2.csproj|d:\\dokumenty\\github\\aplikacje-internetowe-ii\\lab1\\zad2\\zadanie2\\zadanie2\\default.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{9DEB9FA0-2676-49E6-8182-97392C2580E3}|Zadanie2\\Zadanie2.csproj|solutionrelative:zadanie2\\default.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DEB9FA0-2676-49E6-8182-97392C2580E3}|Zadanie2\\Zadanie2.csproj|d:\\dokumenty\\github\\aplikacje-internetowe-ii\\lab1\\zad2\\zadanie2\\zadanie2\\complexcontrols1.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DEB9FA0-2676-49E6-8182-97392C2580E3}|Zadanie2\\Zadanie2.csproj|solutionrelative:zadanie2\\complexcontrols1.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DEB9FA0-2676-49E6-8182-97392C2580E3}|Zadanie2\\Zadanie2.csproj|d:\\dokumenty\\github\\aplikacje-internetowe-ii\\lab1\\zad2\\zadanie2\\zadanie2\\complexcontrols1.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{9DEB9FA0-2676-49E6-8182-97392C2580E3}|Zadanie2\\Zadanie2.csproj|solutionrelative:zadanie2\\complexcontrols1.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DEB9FA0-2676-49E6-8182-97392C2580E3}|Zadanie2\\Zadanie2.csproj|d:\\dokumenty\\github\\aplikacje-internetowe-ii\\lab1\\zad2\\zadanie2\\zadanie2\\simplecontrols.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{9DEB9FA0-2676-49E6-8182-97392C2580E3}|Zadanie2\\Zadanie2.csproj|solutionrelative:zadanie2\\simplecontrols.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DEB9FA0-2676-49E6-8182-97392C2580E3}|Zadanie2\\Zadanie2.csproj|d:\\dokumenty\\github\\aplikacje-internetowe-ii\\lab1\\zad2\\zadanie2\\zadanie2\\simplecontrols.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DEB9FA0-2676-49E6-8182-97392C2580E3}|Zadanie2\\Zadanie2.csproj|solutionrelative:zadanie2\\simplecontrols.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Default.aspx",
+              "DocumentMoniker": "D:\\Dokumenty\\GitHub\\Aplikacje-Internetowe-II\\Lab1\\Zad2\\Zadanie2\\Zadanie2\\Default.aspx",
+              "RelativeDocumentMoniker": "Zadanie2\\Default.aspx",
+              "ToolTip": "D:\\Dokumenty\\GitHub\\Aplikacje-Internetowe-II\\Lab1\\Zad2\\Zadanie2\\Zadanie2\\Default.aspx",
+              "RelativeToolTip": "Zadanie2\\Default.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2026-03-08T20:51:34.114Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ComplexControls1.aspx.cs",
+              "DocumentMoniker": "D:\\Dokumenty\\GitHub\\Aplikacje-Internetowe-II\\Lab1\\Zad2\\Zadanie2\\Zadanie2\\ComplexControls1.aspx.cs",
+              "RelativeDocumentMoniker": "Zadanie2\\ComplexControls1.aspx.cs",
+              "ToolTip": "D:\\Dokumenty\\GitHub\\Aplikacje-Internetowe-II\\Lab1\\Zad2\\Zadanie2\\Zadanie2\\ComplexControls1.aspx.cs",
+              "RelativeToolTip": "Zadanie2\\ComplexControls1.aspx.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-08T20:47:12.96Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ComplexControls1.aspx",
+              "DocumentMoniker": "D:\\Dokumenty\\GitHub\\Aplikacje-Internetowe-II\\Lab1\\Zad2\\Zadanie2\\Zadanie2\\ComplexControls1.aspx",
+              "RelativeDocumentMoniker": "Zadanie2\\ComplexControls1.aspx",
+              "ToolTip": "D:\\Dokumenty\\GitHub\\Aplikacje-Internetowe-II\\Lab1\\Zad2\\Zadanie2\\Zadanie2\\ComplexControls1.aspx",
+              "RelativeToolTip": "Zadanie2\\ComplexControls1.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2026-03-08T20:46:28.228Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SimpleControls.aspx.cs",
+              "DocumentMoniker": "D:\\Dokumenty\\GitHub\\Aplikacje-Internetowe-II\\Lab1\\Zad2\\Zadanie2\\Zadanie2\\SimpleControls.aspx.cs",
+              "RelativeDocumentMoniker": "Zadanie2\\SimpleControls.aspx.cs",
+              "ToolTip": "D:\\Dokumenty\\GitHub\\Aplikacje-Internetowe-II\\Lab1\\Zad2\\Zadanie2\\Zadanie2\\SimpleControls.aspx.cs",
+              "RelativeToolTip": "Zadanie2\\SimpleControls.aspx.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-08T20:43:54.288Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SimpleControls.aspx",
+              "DocumentMoniker": "D:\\Dokumenty\\GitHub\\Aplikacje-Internetowe-II\\Lab1\\Zad2\\Zadanie2\\Zadanie2\\SimpleControls.aspx",
+              "RelativeDocumentMoniker": "Zadanie2\\SimpleControls.aspx",
+              "ToolTip": "D:\\Dokumenty\\GitHub\\Aplikacje-Internetowe-II\\Lab1\\Zad2\\Zadanie2\\Zadanie2\\SimpleControls.aspx",
+              "RelativeToolTip": "Zadanie2\\SimpleControls.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2026-03-08T20:43:11.955Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
