@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Baza Kandydatów</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container" style="max-width: 1000px;">
+        <h2>Lista Zgłoszeń</h2>
+        {% if cv_list %}
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Imię i nazwisko</th>
+                    <th>Email</th>
+                    <th>Stanowisko</th>
+                    <th>Doświadczenie</th>
+                    <th>Akcje</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for cv in cv_list %}
+                <tr>
+                    <td>{{ cv.id }}</td>
+                    <td>{{ cv.fullname }}</td>
+                    <td>{{ cv.email }}</td>
+                    <td>{{ cv.position }}</td>
+                    <td>{{ cv.experience_level }}</td>
+                    <td><a href="/download_cv/{{ cv.id }}">Pobierz TXT</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>Brak zgłoszeń w bazie.</p>
+        {% endif %}
+        
+        <div class="actions">
+            <a href="/generator"><button class="btn-secondary">Wróć do formularza</button></a>
+        </div>
+    </div>
+</body>
+</html>

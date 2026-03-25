@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Twoje CV</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="cv-header">
+            <h1>{{ cv.fullname }}</h1>
+            <h2>{{ cv.position }}</h2>
+            <div class="cv-contact">
+                <span>Email: {{ cv.email }}</span>
+                <span>|</span>
+                <span>GitHub: <a href="{{ cv.github }}">{{ cv.github }}</a></span>
+            </div>
+        </div>
+
+        <h3>Umiejętności techniczne</h3>
+        <ul class="skills-list">
+            {% for skill in cv.skills %}
+            <li>{{ skill }}</li>
+            {% endfor %}
+        </ul>
+
+        <h3>Doświadczenie</h3>
+        <p class="experience-text">{{ cv.experience }}</p>
+
+        <div class="actions">
+            <a href="/download_cv/{{ cv.id }}"><button>Pobierz jako tekst</button></a>
+            <a href="/generator"><button class="btn-secondary">Wróć do formularza</button></a>
+        </div>
+    </div>
+</body>
+
+</html>
