@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Strona główna{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Panel Główny</h1>
+</div>
+
+<p class="subtitle">Wybierz moduł, którym chcesz zarządzać:</p>
+
+<div class="card-grid">
+    <div class="card">
+        <div class="card-icon">📄</div>
+        <h2>Załącznik nr 4</h2>
+        <p>Potwierdzenie uzyskania efektów uczenia się w ramach praktyki zawodowej.</p>
+        <p class="stat">Zarejestrowani studenci: <strong>{{ liczba_zal4 }}</strong></p>
+        <div class="card-actions">
+            <a href="{{ url_for('zal4_lista') }}" class="btn btn-primary">Przejdź do listy</a>
+            <a href="{{ url_for('zal4_nowy') }}" class="btn btn-secondary">Dodaj nowy</a>
+        </div>
+    </div>
+    
+    <div class="card">
+        <div class="card-icon">📖</div>
+        <h2>Załącznik nr 6</h2>
+        <p>Dziennik praktyki zawodowej z podziałem na dni i zadania.</p>
+        <p class="stat">Zarejestrowani studenci: <strong>{{ liczba_zal6 }}</strong></p>
+        <div class="card-actions">
+            <a href="{{ url_for('zal6_lista') }}" class="btn btn-primary">Przejdź do listy</a>
+            <a href="{{ url_for('zal6_nowy') }}" class="btn btn-secondary">Dodaj nowy</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

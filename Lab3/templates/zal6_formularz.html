@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+{% block title %}{{ 'Edycja' if student else 'Nowy' }} - Załącznik nr 6{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Załącznik nr 6 - Dziennik praktyki zawodowej</h1>
+    <a href="{{ url_for('zal6_lista') }}" class="btn btn-secondary">← Wróć do listy</a>
+</div>
+
+<form method="POST" action="{{ url_for('zal6_zapisz') }}">
+
+    <!-- ── Dane podstawowe ───────────────────────────────────────────── -->
+    <section class="form-section">
+        <h2>Dane studenta i praktyki</h2>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="imie_nazwisko">Student:</label>
+                <input type="text" id="imie_nazwisko" name="imie_nazwisko"
+                    value="{{ student.imie_nazwisko if student else '' }}" placeholder="Imię i nazwisko" required>
+            </div>
+            <div class="form-group form-group-sm">
+                <label for="nr_albumu">Nr albumu:</label>
+                <input type="text" id="nr_albumu" name="nr_albumu" value="{{ student.nr_albumu if student else '' }}"
+                    placeholder="np. 12345" {{ 'readonly' if student else '' }} required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="zakres">Zakres praktyki:</label>
+                <input type="text" id="zakres" name="zakres" value="{{ student.zakres if student else '' }}"
+                    placeholder="np. programowanie, administracja siecią">
+            </div>
+            <div class="form-group form-group-sm">
+                <label for="rok_akademicki">Rok akademicki:</label>
+                <input type="text" id="rok_akademicki" name="rok_akademicki"
+                    value="{{ student.rok_akademicki if student else '' }}" placeholder="np. 2024/2025">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="miejsce_praktyki">Miejsce odbywania praktyki (nazwa instytucji):</label>
+            <input type="text" id="miejsce_praktyki" name="miejsce_praktyki"
+                value="{{ student.miejsce_praktyki if student else '' }}"
+                placeholder="Pełna nazwa zakładu pracy / instytucji">
+        </div>
+        <div class="form-row">
+            <div class="form-group form-group-sm">
+                <label for="data_rozpoczecia">Data rozpoczęcia:</label>
+                <input type="date" id="data_rozpoczecia" name="data_rozpoczecia"
+                    value="{{ student.data_rozpoczecia if student else '' }}">
+            </div>
+            <div class="form-group form-group-sm">
+                <label for="data_zakonczenia">Data zakończenia:</label>
+                <input type="date" id="data_zakonczenia" name="data_zakonczenia"
+                    value="{{ student.data_zakonczenia if student else '' }}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="wykaz_zalacznikow">Wykaz załączników:</label>
+            <textarea id="wykaz_zalacznikow" name="wykaz_zalacznikow" rows="3"
+                placeholder="Lista załączników dołączonych do dziennika...">{{ student.wykaz_zalacznikow if student else '' }}</textarea>
+        </div>
+    </section>
+
+    <!-- ── Tabela wpisów dziennika ────────────────────────────────────── -->
+    <section class="form-section">
+        <h2>Wpisy dziennika</h2>
+        <p class="hint">Każdy wiersz to jeden dzień praktyki. Kliknij „+ Dodaj wiersz" lub „+" obok wiersza, by dodać
+            nowy wpis.</p>
+
+        <div class="table-toolbar">
+            <button type="button" class="btn btn-primary" onclick="addRow()">+ Dodaj wiersz</button>
+        </div>
+
+        <table class="edytowalna-tabela" id="dziennikTable">
+            <thead>
+                <tr>
+                    <th style="width:6%">Dzień</th>
+                    <th style="width:12%">Data</th>
+                    <th>Opis wykonanych prac</th>
+                    <th style="width:12%">Nr efektów uczenia się</th>
+                    <th style="width:10%">Akcje</th>
+                </tr>
+            </thead>
+            <tbody id="dziennikBody">
+                {% if student and student.wpisy %}
+                {% for w in student.wpisy %}
+                <tr>
+                    <td><input type="number" name="dzien[]" value="{{ w.dzien }}" min="1" max="120"></td>
+                    <td><input type="date" name="data[]" value="{{ w.data }}"></td>
+                    <td><textarea name="opis[]" rows="2">{{ w.opis }}</textarea></td>
+                    <td><input type="text" name="nr_efektow[]" value="{{ w.nr_efektow }}" placeholder="np. 01, 05"></td>
+                    <td class="actions-cell">
+                        <button type="button" onclick="addAfter(this)" class="btn btn-sm btn-secondary"
+                            title="Dodaj wiersz poniżej">+</button>
+                        <button type="button" onclick="deleteRow(this)" class="btn btn-sm btn-danger"
+                            title="Usuń wiersz">✕</button>
+                    </td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                <!-- Pusty wiersz startowy -->
+                <tr>
+                    <td><input type="number" name="dzien[]" value="1" min="1" max="120"></td>
+                    <td><input type="date" name="data[]"></td>
+                    <td><textarea name="opis[]" rows="2" placeholder="Opis wykonywanych prac..."></textarea></td>
+                    <td><input type="text" name="nr_efektow[]" placeholder="np. 01, 05"></td>
+                    <td class="actions-cell">
+                        <button type="button" onclick="addAfter(this)" class="btn btn-sm btn-secondary"
+                            title="Dodaj wiersz poniżej">+</button>
+                        <button type="button" onclick="deleteRow(this)" class="btn btn-sm btn-danger"
+                            title="Usuń wiersz">✕</button>
+                    </td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </section>
+
+    <div class="form-actions">
+        <a href="{{ url_for('zal6_lista') }}" class="btn btn-secondary">Anuluj</a>
+        <button type="submit" class="btn btn-primary">Zapisz dziennik</button>
+    </div>
+
+</form>
+
+<!-- ── JavaScript - manipulacja DOM (wzorowany na zadaniu 3 z lab) ──── -->
+<script>
+    // Tworzy HTML nowego wiersza tabeli
+    function nowyWiersz() {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td><input type="number" name="dzien[]" min="1" max="120"></td>
+            <td><input type="date"   name="data[]"></td>
+            <td><textarea name="opis[]" rows="2" placeholder="Opis wykonywanych prac..."></textarea></td>
+            <td><input type="text" name="nr_efektow[]" placeholder="np. 01, 05"></td>
+            <td class="actions-cell">
+                <button type="button" onclick="addAfter(this)" class="btn btn-sm btn-secondary" title="Dodaj wiersz poniżej">+</button>
+                <button type="button" onclick="deleteRow(this)" class="btn btn-sm btn-danger" title="Usuń wiersz">✕</button>
+            </td>
+        `;
+        return tr;
+    }
+
+    // Dodaje wiersz na końcu tabeli
+    function addRow() {
+        document.getElementById('dziennikBody').appendChild(nowyWiersz());
+    }
+
+    // Wstawia nowy wiersz bezpośrednio pod bieżącym (metoda .after() z zadania 3)
+    function addAfter(button) {
+        const currentRow = button.closest('tr');
+        currentRow.after(nowyWiersz());
+    }
+
+    // Usuwa wiersz z drzewa DOM
+    function deleteRow(button) {
+        const body = document.getElementById('dziennikBody');
+        if (body.rows.length <= 1) {
+            alert('Dziennik musi zawierać co najmniej jeden wpis.');
+            return;
+        }
+        button.closest('tr').remove();
+    }
+</script>
+{% endblock %}

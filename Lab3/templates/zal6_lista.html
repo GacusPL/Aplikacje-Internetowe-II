@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Lista - Załącznik nr 6{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Załącznik nr 6 - Dzienniki praktyk</h1>
+    <a href="{{ url_for('zal6_nowy') }}" class="btn btn-primary">+ Dodaj dziennik</a>
+</div>
+
+{% if studenci %}
+<table class="data-table">
+    <thead>
+        <tr>
+            <th>Nr albumu</th>
+            <th>Imię i nazwisko</th>
+            <th>Miejsce praktyki</th>
+            <th>Liczba wpisów</th>
+            <th>Akcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for s in studenci %}
+        <tr>
+            <td>{{ s.nr_albumu }}</td>
+            <td><strong>{{ s.imie_nazwisko }}</strong></td>
+            <td>{{ s.miejsce_praktyki }}</td>
+            <td>{{ s.wpisy|length if s.wpisy else 0 }}</td>
+            <td>
+                <div class="actions">
+                    <a href="{{ url_for('zal6_edytuj', nr_albumu=s.nr_albumu) }}"
+                        class="btn btn-secondary btn-sm">Edytuj</a>
+                    <form action="{{ url_for('zal6_usun', nr_albumu=s.nr_albumu) }}" method="POST"
+                        style="display:inline;">
+                        <button type="submit" class="btn btn-danger btn-sm"
+                            onclick="return confirm('Na pewno usunąć?');">Usuń</button>
+                    </form>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<div class="empty-state">
+    <p>Brak wpisów dla Załącznika nr 6.</p>
+    <p><a href="{{ url_for('zal6_nowy') }}">Kliknij tutaj</a> aby dodać pierwszy dziennik.</p>
+</div>
+{% endif %}
+{% endblock %}

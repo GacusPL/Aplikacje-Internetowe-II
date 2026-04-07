@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% block title %}{{ 'Edycja' if student else 'Nowy' }} - Załącznik nr 4{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Załącznik nr 4 - Potwierdzenie uzyskania efektów uczenia się</h1>
+    <a href="{{ url_for('zal4_lista') }}" class="btn btn-secondary">← Wróć do listy</a>
+</div>
+
+<form method="POST" action="{{ url_for('zal4_zapisz') }}">
+
+    <!-- ── Dane studenta ──────────────────────────────────────────────── -->
+    <section class="form-section">
+        <h2>Dane studenta</h2>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="imie_nazwisko">Student/ka:</label>
+                <input type="text" id="imie_nazwisko" name="imie_nazwisko"
+                    value="{{ student.imie_nazwisko if student else '' }}" placeholder="Imię i nazwisko" required>
+            </div>
+            <div class="form-group form-group-sm">
+                <label for="nr_albumu">Nr albumu:</label>
+                <input type="text" id="nr_albumu" name="nr_albumu" value="{{ student.nr_albumu if student else '' }}"
+                    placeholder="np. 12345" {{ 'readonly' if student else '' }} required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="specialnosc">Specjalność:</label>
+                <input type="text" id="specialnosc" name="specialnosc"
+                    value="{{ student.specialnosc if student else '' }}" placeholder="Specjalność">
+            </div>
+            <div class="form-group form-group-sm">
+                <label for="liczba_godzin">Liczba godzin praktyki:</label>
+                <input type="number" id="liczba_godzin" name="liczba_godzin"
+                    value="{{ student.liczba_godzin if student else '' }}" placeholder="np. 120" min="0">
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Wynik ogólny:</label>
+            <div class="radio-group">
+                <label>
+                    <input type="radio" name="wynik_ogolny" value="uzyskal" {{ 'checked' if student and
+                        student.wynik_ogolny=='uzyskal' else '' }}>
+                    uzyskał/a zakładane efekty uczenia się
+                </label>
+                <label>
+                    <input type="radio" name="wynik_ogolny" value="nie uzyskal" {{ 'checked' if not student or
+                        student.wynik_ogolny=='nie uzyskal' else '' }}>
+                    nie uzyskał/a zakładanych efektów uczenia się
+                </label>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Tabela efektów uczenia się ────────────────────────────────── -->
+    <section class="form-section">
+        <h2>Efekty uczenia się</h2>
+        <table class="efekty-table">
+            <thead>
+                <tr>
+                    <th style="width:5%">Nr</th>
+                    <th>Opis efektu uczenia się</th>
+                    <th style="width:25%">Potwierdzenie uzyskania</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for e in efekty %}
+                <tr>
+                    <td class="text-center">{{ e.id }}</td>
+                    <td>{{ e.opis }}</td>
+                    <td>
+                        {% set wynik = student.wyniki_efektow[e.id] if student and e.id in student.wyniki_efektow else
+                        'nie uzyskal' %}
+                        <label class="radio-inline">
+                            <input type="radio" name="efekt_{{ e.id }}" value="uzyskal" {{ 'checked' if wynik=='uzyskal'
+                                else '' }}>
+                            uzyskał/a
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="efekt_{{ e.id }}" value="nie uzyskal" {{ 'checked' if
+                                wynik=='nie uzyskal' else '' }}>
+                            nie uzyskał/a
+                        </label>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+    <!-- ── Opinia opiekuna uczelnianego ──────────────────────────────── -->
+    <section class="form-section">
+        <h2>Opinia opiekuna uczelnianego</h2>
+        <div class="form-group">
+            <textarea id="opinia_opiekuna" name="opinia_opiekuna" rows="5"
+                placeholder="Treść opinii opiekuna uczelnianego...">{{ student.opinia_opiekuna if student else '' }}</textarea>
+        </div>
+        <p class="hint">* Podpis i pieczęć zakładu pracy zostaną złożone na wydruku dokumentu.</p>
+    </section>
+
+    <div class="form-actions">
+        <a href="{{ url_for('zal4_lista') }}" class="btn btn-secondary">Anuluj</a>
+        <button type="submit" class="btn btn-primary">Zapisz</button>
+    </div>
+
+</form>
+{% endblock %}

@@ -1,0 +1,438 @@
+/* ── Reset & base ─────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 15px;
+    background: #f4f6f9;
+    color: #2c3e50;
+    min-height: 100vh;
+}
+
+/* ── Navbar ───────────────────────────────────────────────────────────── */
+.navbar {
+    background: #1a3a6c;
+    color: #fff;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .25);
+}
+
+.nav-brand {
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: .02em;
+}
+
+.nav-links a {
+    color: #cfe0ff;
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-size: .95rem;
+    transition: color .15s;
+}
+
+.nav-links a:hover {
+    color: #fff;
+}
+
+/* ── Container ────────────────────────────────────────────────────────── */
+.container {
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+h1 {
+    font-size: 1.6rem;
+    margin-bottom: .25rem;
+    color: #1a3a6c;
+}
+
+h2 {
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+    color: #1a3a6c;
+    border-bottom: 2px solid #dde4f0;
+    padding-bottom: .4rem;
+}
+
+.subtitle {
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+/* ── Flash messages ───────────────────────────────────────────────────── */
+.flash {
+    padding: .75rem 1rem;
+    border-radius: 6px;
+    margin-bottom: 1.25rem;
+    font-size: .95rem;
+}
+
+.flash-success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.flash-error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* ── Buttons ──────────────────────────────────────────────────────────── */
+.btn {
+    display: inline-block;
+    padding: .5rem 1.1rem;
+    border-radius: 5px;
+    font-size: .9rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    transition: opacity .15s, transform .1s;
+}
+
+.btn:hover {
+    opacity: .88;
+    transform: translateY(-1px);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn-primary {
+    background: #1a3a6c;
+    color: #fff;
+}
+
+.btn-secondary {
+    background: #6c7a8d;
+    color: #fff;
+}
+
+.btn-danger {
+    background: #c0392b;
+    color: #fff;
+}
+
+.btn-sm {
+    padding: .25rem .6rem;
+    font-size: .8rem;
+}
+
+/* ── Page header ──────────────────────────────────────────────────────── */
+.page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+/* ── Card grid (index) ────────────────────────────────────────────────── */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 1.75rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    margin-bottom: .75rem;
+}
+
+.card h2 {
+    border: none;
+    font-size: 1.2rem;
+}
+
+.card p {
+    color: #555;
+    margin: .5rem 0;
+    line-height: 1.5;
+}
+
+.stat strong {
+    color: #1a3a6c;
+    font-size: 1.1rem;
+}
+
+.card-actions {
+    margin-top: 1.25rem;
+    display: flex;
+    gap: .5rem;
+}
+
+/* ── Data tables ──────────────────────────────────────────────────────── */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+}
+
+.data-table th {
+    background: #1a3a6c;
+    color: #fff;
+    padding: .7rem 1rem;
+    text-align: left;
+    font-size: .9rem;
+}
+
+.data-table td {
+    padding: .65rem 1rem;
+    border-bottom: 1px solid #edf0f5;
+    vertical-align: middle;
+}
+
+.data-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.data-table tbody tr:hover {
+    background: #f7f9fc;
+}
+
+.actions {
+    display: flex;
+    gap: .4rem;
+    align-items: center;
+}
+
+/* ── Badges ───────────────────────────────────────────────────────────── */
+.badge {
+    display: inline-block;
+    padding: .2rem .6rem;
+    border-radius: 12px;
+    font-size: .8rem;
+    font-weight: 600;
+}
+
+.badge-success {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge-danger {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+/* ── Empty state ──────────────────────────────────────────────────────── */
+.empty-state {
+    background: #fff;
+    border-radius: 8px;
+    padding: 3rem;
+    text-align: center;
+    color: #888;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
+}
+
+.empty-state a {
+    color: #1a3a6c;
+}
+
+/* ── Form sections ────────────────────────────────────────────────────── */
+.form-section {
+    background: #fff;
+    border-radius: 8px;
+    padding: 1.5rem 1.75rem;
+    margin-bottom: 1.25rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .07);
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: 1rem;
+}
+
+.form-group-sm {
+    flex: 0 0 200px;
+}
+
+label {
+    font-size: .88rem;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: .35rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="number"],
+textarea,
+select {
+    padding: .5rem .7rem;
+    border: 1px solid #ccd3de;
+    border-radius: 5px;
+    font-size: .95rem;
+    font-family: inherit;
+    color: #2c3e50;
+    transition: border-color .15s;
+    width: 100%;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: #1a3a6c;
+    box-shadow: 0 0 0 2px rgba(26, 58, 108, .12);
+}
+
+input[readonly] {
+    background: #f0f2f5;
+    color: #666;
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* ── Radio groups ─────────────────────────────────────────────────────── */
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
+}
+
+.radio-group label,
+.radio-inline {
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+    cursor: pointer;
+}
+
+.radio-inline {
+    margin-right: .75rem;
+}
+
+/* ── Efekty table ─────────────────────────────────────────────────────── */
+.efekty-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .9rem;
+}
+
+.efekty-table th {
+    background: #dde4f0;
+    color: #1a3a6c;
+    padding: .6rem .8rem;
+    text-align: left;
+    border: 1px solid #c5cedf;
+}
+
+.efekty-table td {
+    padding: .55rem .8rem;
+    border: 1px solid #e2e8f0;
+    vertical-align: middle;
+}
+
+.efekty-table tbody tr:nth-child(even) {
+    background: #f7f9fc;
+}
+
+.efekty-table tbody tr:hover {
+    background: #eef2fb;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* ── Editable journal table ───────────────────────────────────────────── */
+.table-toolbar {
+    margin-bottom: .75rem;
+}
+
+.edytowalna-tabela {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .9rem;
+}
+
+.edytowalna-tabela th {
+    background: #dde4f0;
+    color: #1a3a6c;
+    padding: .6rem .75rem;
+    text-align: left;
+    border: 1px solid #c5cedf;
+}
+
+.edytowalna-tabela td {
+    padding: .4rem .5rem;
+    border: 1px solid #e2e8f0;
+    vertical-align: top;
+}
+
+.edytowalna-tabela tbody tr:nth-child(even) {
+    background: #f7f9fc;
+}
+
+.edytowalna-tabela input[type="number"] {
+    width: 70px;
+}
+
+.edytowalna-tabela input[type="date"] {
+    width: 150px;
+}
+
+.edytowalna-tabela textarea {
+    width: 100%;
+    min-height: 52px;
+}
+
+.actions-cell {
+    display: flex;
+    gap: .3rem;
+    padding-top: .5rem;
+}
+
+/* ── Form actions ─────────────────────────────────────────────────────── */
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: .75rem;
+    margin-top: .5rem;
+}
+
+/* ── Hint text ────────────────────────────────────────────────────────── */
+.hint {
+    font-size: .82rem;
+    color: #888;
+    margin-top: .5rem;
+    font-style: italic;
+}

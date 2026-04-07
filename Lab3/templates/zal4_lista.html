@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}Lista - Załącznik nr 4{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Załącznik nr 4 - Lista studentów</h1>
+    <a href="{{ url_for('zal4_nowy') }}" class="btn btn-primary">+ Dodaj nowego</a>
+</div>
+
+{% if studenci %}
+<table class="data-table">
+    <thead>
+        <tr>
+            <th>Nr albumu</th>
+            <th>Imię i nazwisko</th>
+            <th>Specjalność</th>
+            <th>Wynik ogólny</th>
+            <th>Akcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for s in studenci %}
+        <tr>
+            <td>{{ s.nr_albumu }}</td>
+            <td><strong>{{ s.imie_nazwisko }}</strong></td>
+            <td>{{ s.specialnosc }}</td>
+            <td>
+                {% if s.wynik_ogolny == 'uzyskal' %}
+                <span class="badge badge-success">Uzyskał/a</span>
+                {% else %}
+                <span class="badge badge-danger">Nie uzyskał/a</span>
+                {% endif %}
+            </td>
+            <td>
+                <div class="actions">
+                    <a href="{{ url_for('zal4_edytuj', nr_albumu=s.nr_albumu) }}"
+                        class="btn btn-secondary btn-sm">Rozlicz</a>
+                    <form action="{{ url_for('zal4_usun', nr_albumu=s.nr_albumu) }}" method="POST"
+                        style="display:inline;">
+                        <button type="submit" class="btn btn-danger btn-sm"
+                            onclick="return confirm('Na pewno usunąć?');">Usuń</button>
+                    </form>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<div class="empty-state">
+    <p>Brak wpisów dla Załącznika nr 4.</p>
+    <p><a href="{{ url_for('zal4_nowy') }}">Kliknij tutaj</a> aby dodać pierwszego studenta.</p>
+</div>
+{% endif %}
+{% endblock %}
