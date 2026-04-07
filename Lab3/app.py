@@ -5,12 +5,9 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 app = Flask(__name__)
 app.secret_key = 'praktyki-secret-key'
 
-# ── Pliki bazy danych ──────────────────────────────────────────────────────────
 ZAL4_FILE = 'zal4_database.json'
 ZAL6_FILE = 'zal6_database.json'
 
-
-# ── Logika bazy danych (wzorowana na zadaniu wprowadzającym) ───────────────────
 
 def load_data(filepath):
     if os.path.exists(filepath):
@@ -32,7 +29,7 @@ def find_student(records, nr_albumu):
     return None
 
 
-# ── Efekty uczenia się (Załącznik nr 4) ───────────────────────────────────────
+# Efekty uczenia się
 
 EFEKTY = [
     {'id': '01', 'opis': 'Ma wiedzę na temat sposobu realizacji zadań inżynierskich dotyczących informatyki z zachowaniem standardów i norm technicznych'},
@@ -51,7 +48,7 @@ EFEKTY = [
 ]
 
 
-# ── Strona główna ──────────────────────────────────────────────────────────────
+# Strona główna
 
 @app.route('/')
 def index():
@@ -62,7 +59,7 @@ def index():
                            liczba_zal6=len(studenci_zal6))
 
 
-# ── Załącznik 4 - lista studentów ─────────────────────────────────────────────
+# Załącznik 4 - lista studentów
 
 @app.route('/zal4')
 def zal4_lista():
@@ -70,7 +67,6 @@ def zal4_lista():
     return render_template('zal4_lista.html', studenci=studenci)
 
 
-# ── Załącznik 4 – nowy / edycja ───────────────────────────────────────────────
 
 @app.route('/zal4/nowy')
 def zal4_nowy():
@@ -107,7 +103,6 @@ def zal4_zapisz():
         'opinia_opiekuna': request.form.get('opinia_opiekuna', '').strip(),
     }
 
-    # Aktualizuj istniejący lub dodaj nowy
     istniejacy = find_student(studenci, nr_albumu)
     if istniejacy:
         idx = studenci.index(istniejacy)
@@ -130,7 +125,7 @@ def zal4_usun(nr_albumu):
     return redirect(url_for('zal4_lista'))
 
 
-# ── Załącznik 6 – lista studentów ─────────────────────────────────────────────
+# Załącznik 6 – lista studentów
 
 @app.route('/zal6')
 def zal6_lista():
@@ -138,7 +133,6 @@ def zal6_lista():
     return render_template('zal6_lista.html', studenci=studenci)
 
 
-# ── Załącznik 6 – nowy / edycja ───────────────────────────────────────────────
 
 @app.route('/zal6/nowy')
 def zal6_nowy():
@@ -160,7 +154,7 @@ def zal6_zapisz():
     studenci = load_data(ZAL6_FILE)
     nr_albumu = request.form.get('nr_albumu', '').strip()
 
-    # Pobierz listowe dane tabeli dziennika (wzorowane na zadaniu 4 z lab)
+    # Pobierz listowe dane tabeli dziennika
     dni        = request.form.getlist('dzien[]')
     daty       = request.form.getlist('data[]')
     opisy      = request.form.getlist('opis[]')

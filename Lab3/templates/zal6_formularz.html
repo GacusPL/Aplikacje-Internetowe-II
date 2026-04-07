@@ -9,7 +9,6 @@
 
 <form method="POST" action="{{ url_for('zal6_zapisz') }}">
 
-    <!-- ── Dane podstawowe ───────────────────────────────────────────── -->
     <section class="form-section">
         <h2>Dane studenta i praktyki</h2>
         <div class="form-row">
@@ -61,7 +60,6 @@
         </div>
     </section>
 
-    <!-- ── Tabela wpisów dziennika ────────────────────────────────────── -->
     <section class="form-section">
         <h2>Wpisy dziennika</h2>
         <p class="hint">Każdy wiersz to jeden dzień praktyki. Kliknij „+ Dodaj wiersz" lub „+" obok wiersza, by dodać
@@ -98,7 +96,7 @@
                 </tr>
                 {% endfor %}
                 {% else %}
-                <!-- Pusty wiersz startowy -->
+
                 <tr>
                     <td><input type="number" name="dzien[]" value="1" min="1" max="120"></td>
                     <td><input type="date" name="data[]"></td>
@@ -123,7 +121,6 @@
 
 </form>
 
-<!-- ── JavaScript - manipulacja DOM (wzorowany na zadaniu 3 z lab) ──── -->
 <script>
     // Tworzy HTML nowego wiersza tabeli
     function nowyWiersz() {
@@ -146,7 +143,6 @@
         document.getElementById('dziennikBody').appendChild(nowyWiersz());
     }
 
-    // Wstawia nowy wiersz bezpośrednio pod bieżącym (metoda .after() z zadania 3)
     function addAfter(button) {
         const currentRow = button.closest('tr');
         currentRow.after(nowyWiersz());
